@@ -55,8 +55,8 @@ function Chat(props: Chat_Props): JSX.Element {
     }
 
     function connect(): void {
-        const newMessageWebsocket = new WebSocket("ws://127.0.0.1:8080/message?client=" + Hash(props.client.code));
-        const newNotificationWebsocket = new WebSocket("ws://127.0.0.1:8080/notification?client=" + Hash(props.client.code));
+        const newMessageWebsocket = new WebSocket("ws://192.168.0.7:8080/message?client=" + Hash(props.client.code));
+        const newNotificationWebsocket = new WebSocket("ws://192.168.0.7:8080/notification?client=" + Hash(props.client.code));
         newMessageWebsocket.onmessage = function(event: MessageEvent): void {
             const payload = JSON.parse(event.data);
             switch (payload.type) {
@@ -103,7 +103,7 @@ function Chat(props: Chat_Props): JSX.Element {
     async function fetch_conversation(): Promise<void> {
         if (props.contact !== null) {
             try {
-                const response: Response = await fetch("http://127.0.0.1:8080/display_conversation", {
+                const response: Response = await fetch("http://192.168.0.7:8080/display_conversation", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -128,7 +128,7 @@ function Chat(props: Chat_Props): JSX.Element {
 
     async function delete_message(message: Message|Attachment): Promise<void> {
         try {
-            const response: Response = await fetch("http://127.0.0.1:8080/delete_message", {
+            const response: Response = await fetch("http://192.168.0.7:8080/delete_message", {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -161,7 +161,7 @@ function Chat(props: Chat_Props): JSX.Element {
     }
 
     function display_media(mediaType: string, url: string): JSX.Element {
-        const src = ("http://127.0.0.1:8080/media" + url);
+        const src = ("http://192.168.0.7:8080/media" + url);
         switch (mediaType) {
           case "image":
             return <img
@@ -261,7 +261,7 @@ function Chat(props: Chat_Props): JSX.Element {
 
     async function upload(data: FormData): Promise<void> {
         try {
-            const response: Response = await fetch("http://127.0.0.1:8080/uploads",{
+            const response: Response = await fetch("http://192.168.0.7:8080/uploads",{
                 method: "POST",
                 body: data
             });
@@ -508,7 +508,7 @@ function Chat(props: Chat_Props): JSX.Element {
                                     cursor: "pointer",
                                 }}
                                 onClick={() => handleDisplayer(props.contact && props.contact.photo)}
-                                src={("http://127.0.0.1:8080/media" + (props.contact.photo || "/default_user_photo.jpg"))}
+                                src={("http://192.168.0.7:8080/media" + (props.contact.photo || "/default_user_photo.jpg"))}
                                 alt="photo"
                                 />
                                 <p className="lead fs-3">{props.contact.username}</p>

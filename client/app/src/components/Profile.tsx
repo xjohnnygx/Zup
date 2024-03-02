@@ -35,7 +35,7 @@ function Profile(props: Profile_Props): JSX.Element {
 
     async function remove_photo(): Promise<void> {
         try {
-            const response: Response = await fetch("http://127.0.0.1:8080/remove_photo?client=" + (Hash(props.client.code)), {
+            const response: Response = await fetch("http://192.168.0.7:8080/remove_photo?client=" + (Hash(props.client.code)), {
                 method: "DELETE",
             });
             if (response.status !== 200) {
@@ -56,7 +56,7 @@ function Profile(props: Profile_Props): JSX.Element {
 
     async function update_photo(data: FormData): Promise<void> {
         try {
-            const response: Response = await fetch("http://127.0.0.1:8080/update_photo", {
+            const response: Response = await fetch("http://192.168.0.7:8080/update_photo", {
                 method: "PUT",
                 body: data
             });
@@ -81,7 +81,7 @@ function Profile(props: Profile_Props): JSX.Element {
         if (textFieldRef.current && !(/^\s*$/.test(textFieldRef.current.value))) {
             event.preventDefault();
             try {
-                const response: Response = await fetch("http://127.0.0.1:8080/update_username", {
+                const response: Response = await fetch("http://192.168.0.7:8080/update_username", {
                     method: "PUT",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -225,7 +225,7 @@ function Profile(props: Profile_Props): JSX.Element {
                     cursor: "pointer"
                 }}
                 onClick={() => setDisplay(true)}
-                src={("http://127.0.0.1:8080/media" + (props.client.photo_url || "/default_user_photo.jpg"))}
+                src={("http://192.168.0.7:8080/media" + (props.client.photo_url || "/default_user_photo.jpg"))}
                 alt="photo"
                 />
                 <div className="row">

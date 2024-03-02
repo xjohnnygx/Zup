@@ -39,4 +39,4 @@ app.mount(
 )
 
 if __name__ == "__main__":
-    uvicorn.run(app=app, host="127.0.0.1", port=8080)
+    uvicorn.run(app=app, host="192.168.0.7", port=8080)

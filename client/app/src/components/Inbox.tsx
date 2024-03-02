@@ -29,7 +29,7 @@ function Inbox(props: Inbox_Props): JSX.Element {
 
     async function request_inbox(): Promise<void> {
         try {
-            const response: Response = await fetch("http://127.0.0.1:8080/request_inbox?client=" + Hash(props.client.code));
+            const response: Response = await fetch("http://192.168.0.7:8080/request_inbox?client=" + Hash(props.client.code));
             switch (response.status) {
                 case 200:
                     setInbox(await response.json());
@@ -60,7 +60,7 @@ function Inbox(props: Inbox_Props): JSX.Element {
         event.preventDefault();
         try {
             if (input.current && (input.current.value.length === 10)) {
-                const response: Response = await fetch("http://127.0.0.1:8080/add_contact", {
+                const response: Response = await fetch("http://192.168.0.7:8080/add_contact", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -99,7 +99,7 @@ function Inbox(props: Inbox_Props): JSX.Element {
 
     async function remove_conversation(contact: Contact): Promise<void> {
         try {
-            const response: Response = await fetch("http://127.0.0.1:8080/remove_conversation", {
+            const response: Response = await fetch("http://192.168.0.7:8080/remove_conversation", {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -144,7 +144,7 @@ function Inbox(props: Inbox_Props): JSX.Element {
                     <img
                     className="rounded-circle"
                     style={{ height: "100px" }}
-                    src={("http://127.0.0.1:8080/media" + (props.client.photo_url || "/default_user_photo.jpg"))}
+                    src={("http://192.168.0.7:8080/media" + (props.client.photo_url || "/default_user_photo.jpg"))}
                     alt="photo"
                     />
                     <p className="lead fs-4">me</p>
@@ -226,7 +226,7 @@ function Inbox(props: Inbox_Props): JSX.Element {
                                     cursor: "pointer"
                                 }}
                                 onClick={() => handleImageClick(contact.photo)}
-                                src={("http://127.0.0.1:8080/media" + (contact.photo || "/default_user_photo.jpg"))}
+                                src={("http://192.168.0.7:8080/media" + (contact.photo || "/default_user_photo.jpg"))}
                                 alt="photo"
                                 />
                                 <div
@@ -267,7 +267,7 @@ function Inbox(props: Inbox_Props): JSX.Element {
                 <img
                 className="rounded-circle"
                 style={{ height: "100px" }}
-                src={("http://127.0.0.1:8080/media" + (props.client.photo_url || "/default_user_photo.jpg"))}
+                src={("http://192.168.0.7:8080/media" + (props.client.photo_url || "/default_user_photo.jpg"))}
                 alt="photo"
                 />
                 <p className="lead fs-4">me</p>
@@ -319,7 +319,7 @@ function Inbox(props: Inbox_Props): JSX.Element {
                     fontSize: "35px"
                 }}
                 >conversations</h1>
-                <p className="mt-5">Your contacts and conversations will appear here.</p>
+                <p className="mt-5 text-center">Your contacts and conversations will appear here.</p>
             </div>
         </div>
     );

@@ -29,7 +29,7 @@ function VerificationCode(props: VerificationCode_Props): JSX.Element {
         event.preventDefault();
         try {
             if (input.current && input.current.value) {
-                const response: Response = await fetch("http://127.0.0.1:8080/sign_up?authentication_code=" + (input.current.value), {
+                const response: Response = await fetch("http://192.168.0.7:8080/sign_up?authentication_code=" + (input.current.value), {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(props.payload)

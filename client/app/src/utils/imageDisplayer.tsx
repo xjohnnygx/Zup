@@ -15,7 +15,7 @@ function ImgDisplayer(props: ImgDisplayerProps): JSX.Element {
         onHide={() => props.setTrigger(false)}
         >
             <img
-            src={"http://127.0.0.1:8080/media" + (props.src || "/default_user_photo.jpg")}
+            src={"http://192.168.0.7:8080/media" + (props.src || "/default_user_photo.jpg")}
             alt="photo"
             />
         </Modal>

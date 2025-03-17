@@ -1,7 +1,5 @@
 # Zup! - WhatsApp Clone
 
-Zup! is a messaging application that replicates the core functionalities of WhatsApp. This project is developed by Johnny Garcia as part of a portfolio to showcase proficiency in full-stack development.
-
 ## Features
 
 - **Real-time Messaging:** Send and receive messages instantly.
